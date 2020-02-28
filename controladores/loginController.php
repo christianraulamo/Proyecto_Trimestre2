@@ -1,6 +1,6 @@
 <?php
 
-require_once "BaseController.php";
+require_once "baseController.php";
 require_once "libs/Ruta.php";
 require_once "modelos/usuario.php";
 require_once "modelos/receta.php";
@@ -11,6 +11,7 @@ class LoginController extends BaseController
     public function __construct()
     {
         parent::__construct();
+        
     }
 
     public function listar()

@@ -51,26 +51,25 @@
 		</div>
 	{% endblock %}
 
-					{% block contenido %}
-						<div class="card" style="width: 50rem;">
-							<div class="card-body">
-								<h5 class="card-title" style=" text-align: center;">
-									<u>{{ dat.NomRec }}</u>
-								</h5>
-								<p class="card-text">Ingrediente principal:
-									{{ dat.IngredientePrincipal }}</p>
-							</div>
-							<ul class="list-group list-group-flush">
-								<li class="list-group-item">Tiempo de preparación:
-									{{ dat.Tiempo }}</li>
-								<li class="list-group-item">Raciones:
-									{{ dat.Raciones }}</li>
-								<li class="list-group-item">Temporada:
-									{{ dat.Temporada }}</li>
-							</ul>
-							<div class="card-body">
-								<a href="receta/{{ dat.NomFichero }}" class="btn btn-primary stretched-link">Mostrar Receta</a>
-								<a href="index.php?ope=borrar&con=receta&id={{ dat.idRec }}" class="btn btn-danger stretched-link">Borrar</a>
-							</div>
-						</div>
-					{% endblock %}
+	{% block contenido %}
+		<div class="card" style="width: 50rem;">
+			<div class="card-body">
+				<h5 class="card-title" style=" text-align: center;">
+					<u>{{ dat.NomRec }}</u>
+				</h5>
+				<p class="card-text">Ingrediente principal:
+					{{ dat.IngredientePrincipal }}</p>
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">Tiempo de preparación:
+					{{ dat.Tiempo }}</li>
+				<li class="list-group-item">Raciones:
+					{{ dat.Raciones }}</li>
+				<li class="list-group-item">Temporada:
+					{{ dat.Temporada }}</li>
+			</ul>
+			<div class="card-body">
+				<a href="index.php?ope=borrar&con=receta&id={{ dat.idRec }}&email={{item.Correo}}&pass={{item.Contraseña}}" class="btn btn-danger stretched-link">Borrar</a>
+			</div>
+		</div>
+	{% endblock %}

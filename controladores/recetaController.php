@@ -1,6 +1,6 @@
 <?php
 
-require_once "BaseController.php";
+require_once "baseController.php";
 require_once "libs/Ruta.php";
 require_once "modelos/receta.php";
 require_once "modelos/ingrediente.php";

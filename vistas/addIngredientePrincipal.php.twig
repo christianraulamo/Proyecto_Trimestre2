@@ -51,20 +51,20 @@
 		</div>
 	{% endblock %}
 
-					{% block contenido %}
+	{% block contenido %}
 
-						<form action="/recetas/index.php" method="get">
-							<input type="hidden" name="con" value="receta"/>
-							<input type="hidden" name="ope" value="anadirIngrediente"/>
+		<form action="/recetas/index.php" method="get">
+			<input type="hidden" name="con" value="receta"/>
+			<input type="hidden" name="ope" value="anadirIngrediente"/>
 
-							<label for="IngredientePrincipal">Nuevo Ingrediente:
-							</label>
-							<input type="text" id="IngredientePrincipal" name="IngredientePrincipal" required/>
-							<input type="hidden" id="IdRec" name="IdRec" value="{{ IdRec }}" required/>
-							<br/>
+			<label for="IngredientePrincipal">Nuevo Ingrediente:
+			</label>
+			<input type="text" id="IngredientePrincipal" name="IngredientePrincipal" required/>
+			<input type="hidden" id="IdRec" name="IdRec" value="{{ IdRec }}" required/>
+			<br/>
 
-							<button type="submit">Guardar</button>
-						</form>
+			<button type="submit">Guardar</button>
+		</form>
 
 
-					{% endblock %}
+	{% endblock %}
