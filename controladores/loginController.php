@@ -1,6 +1,6 @@
 <?php
 
-require_once "baseController.php";
+require_once "BaseController.php";
 require_once "libs/Ruta.php";
 require_once "modelos/usuario.php";
 require_once "modelos/receta.php";
@@ -11,7 +11,6 @@ class LoginController extends BaseController
     public function __construct()
     {
         parent::__construct();
-        
     }
 
     public function listar()
@@ -78,26 +77,33 @@ class LoginController extends BaseController
         $pass  = $_GET["pass"];
 
         $usu = Sesion::Usu2($email, $pass);
-        
-        print_r($usu);
-
 
         echo $this->twig->render("editarPerfil.php.twig", ['usu' => $usu]);
     }
 
     public function editar()
     {
-        $ses = Sesion::getInstance();
 
+        $usuario = Usuario::find($_GET["id"]);
 
         $email = $_GET["email"];
         $pass  = $_GET["pass"];
 
-        $usu = Sesion::Usu2($email, $pass);
         
-        print_r($usu);
+        $NomUsu = $_GET["NomUsu"];
+        $ApeUsu = $_GET["ApeUsu"];
+
+        $usuario->setNomUsu($NomUsu);
+        $usuario->setApeUsu($ApeUsu);
+
+        // refrescar el objeto en la base de datos
+        $usuario->save();
+
+        $dat = Receta::findAll();
+        $usu = Sesion::Usu2($email, $pass);
 
 
-        echo $this->twig->render("editarPerfil.php.twig", ['usu' => $usu]);
+
+        echo $this->twig->render("verRecetas.php.twig", ['dat' => $dat, 'usu' => $usu]);
     }
 }

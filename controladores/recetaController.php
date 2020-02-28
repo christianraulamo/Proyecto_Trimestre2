@@ -1,6 +1,6 @@
 <?php
 
-require_once "baseController.php";
+require_once "BaseController.php";
 require_once "libs/Ruta.php";
 require_once "modelos/receta.php";
 require_once "modelos/ingrediente.php";
@@ -125,11 +125,6 @@ class RecetaController extends BaseController
 
             $per->save();
 
-            $email = $_GET["email"];
-            $pass  = $_GET["pass"];
-
-            $usu = Sesion::Usu2($email, $pass);
-
             // redirigimos al índice
             $email = $_GET["email"];
             $pass  = $_GET["pass"];
@@ -167,7 +162,7 @@ class RecetaController extends BaseController
 
         $Rec_Ing->save();
 
-        
+
 
         $email = $_GET["email"];
         $pass  = $_GET["pass"];
@@ -179,7 +174,7 @@ class RecetaController extends BaseController
     }
 
     /**
-     * Borramos la serie.
+     * Borramos la receta.
      */
     public function borrar()
     {
@@ -194,7 +189,7 @@ class RecetaController extends BaseController
         $usu = Sesion::Usu2($email, $pass);
 
         /**
-         * Redirige al listado de series.
+         * Redirige al listado de recetas.
          */
         echo $this->twig->render("verRecetas.php.twig", ['dat' => $dat, 'usu' => $usu]);
     }

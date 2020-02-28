@@ -69,7 +69,10 @@
 					{{ dat.Temporada }}</li>
 			</ul>
 			<div class="card-body">
-				<a href="index.php?ope=borrar&con=receta&id={{ dat.idRec }}&email={{item.Correo}}&pass={{item.Contraseña}}" class="btn btn-danger stretched-link">Borrar</a>
+
+				{% for item in usu %}
+					<a href="index.php?ope=borrar&con=receta&id={{ dat.idRec }}&email={{item.Correo}}&pass={{item.Contraseña}}" class="btn btn-danger stretched-link">Borrar</a>
+				{% endfor %}
 			</div>
 		</div>
 	{% endblock %}

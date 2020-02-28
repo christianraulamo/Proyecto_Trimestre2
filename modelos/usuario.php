@@ -48,6 +48,7 @@ class Usuario
 
         return $this;
     }
+
     /**
      * @return mixed $NomUsu
      */
@@ -67,6 +68,24 @@ class Usuario
     }
     
     /**
+     * @return mixed $ApeUsu
+     */
+    public function getApeUsu()
+    {
+        return $this->ApeUsu;
+    }
+
+    /**
+     * @return mixed $ApeUsu
+     */
+    public function setApeUsu($ApeUsu)
+    {
+        $this->ApeUsu = $ApeUsu;
+
+        return $this;
+    }
+
+    /**
      * @return mixed $Contraseña
      */
     public function getContraseña()
@@ -83,7 +102,7 @@ class Usuario
 
         return $this;
     }
-    
+
     /**
      * @return mixed $Admin
      */
@@ -96,7 +115,7 @@ class Usuario
     {
         $db  = new BaseDeDatos();
 
-        if (is_null($this->idUsu)) :
+        if (is_null($this->IdUsu)) :
 
             $sql = "INSERT INTO usuario (Correo, NomUsu, ApeUsu, Contraseña) 
                                 VALUES ('{$this->Correo}', '{$this->NomUsu}', '{$this->ApeUsu}', '{$this->Contraseña}') ;";
@@ -105,10 +124,23 @@ class Usuario
             $db->query($sql);
 
             $this->idUsu = $db->lastId();
+        else :
+
+            // actualizamos el usuario
+            $db->query("UPDATE usuario SET NomUsu='{$this->NomUsu}', ApeUsu='{$this->ApeUsu}' WHERE IdUsu={$this->IdUsu} ;");
 
         endif;
 
         return $this;
+    }
+
+    public static function find(int $id): Usuario
+    {
+        $db = new BaseDeDatos();
+        $db->query("SELECT * FROM usuario WHERE IdUsu = $id ;");
+
+
+        return $db->getObject("Usuario");
     }
 
     public function __toString()

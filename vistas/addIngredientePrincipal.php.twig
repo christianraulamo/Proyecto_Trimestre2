@@ -57,6 +57,19 @@
 			<input type="hidden" name="con" value="receta"/>
 			<input type="hidden" name="ope" value="anadirIngrediente"/>
 
+			{% for item in usu %}
+				<div class="row form-group">
+					<div class="col-md-4 mx-auto">
+						<input class="form-control" type="hidden" id="email" name="email" value="{{item.Correo}}" readonly/>
+
+					</div>
+					<div class="col-md-4 mx-auto">
+						<input class="form-control" type="hidden" id="pass" name="pass" value="{{item.Contraseña}}" readonly/>
+					</div>
+				</div>
+
+			{% endfor %}
+
 			<label for="IngredientePrincipal">Nuevo Ingrediente:
 			</label>
 			<input type="text" id="IngredientePrincipal" name="IngredientePrincipal" required/>

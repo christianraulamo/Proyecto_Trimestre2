@@ -54,30 +54,39 @@
 	{% block contenido %}
 
 		{% for item in usu %}
-			<form action="/misseries/index.php" method="get">
+			<form action="/recetas/index.php" method="get">
 				<input type="hidden" name="con" value="login"/>
 				<input type="hidden" name="ope" value="editar"/>
 
-				<label for="id">id:
-				</label>
-				<input type="text" id="id" name="id" value="{{ item.IdUsu }}" readonly/>
-				<br/>
+				<input type="hidden" id="id" name="id" value="{{ item.IdUsu }}" readonly/>
+				<input type="hidden" id="email" name="email" value="{{ item.Correo }}" readonly/>
+				<input type="hidden" id="pass" name="pass" value="{{ item.Contraseña }}" readonly/>
+				
 
-				<label for="NomUsu">Nombre:
-				</label>
-				<input type="text" id="NomUsu" name="NomUsu" value="{{ item.NomUsu }}"/>
-				<br/>
-				<label for="ApeUsu">Apellido:
-				</label>
-				<input type="text" id="ApeUsu" name="ApeUsu" value="{{ item.ApeUsu }}"/>
-				<br/>
-				<label for="id">Admin:
-				</label>
-				<input type="text" id="id" name="id" value="{{ item.Admin }}" readonly/>
-				<br/>
-				<button type="submit">Guardar</button>
+				<div class="row form-group">
+
+					<div class="col-md-4 mx-auto">
+
+						<label class="col-form-label" for="NomUsu">Nombre:
+						</label>
+						<input type="text" class="form-control" id="NomUsu" name="NomUsu" value="{{ item.NomUsu }}"/>
+					</div>
+
+					<div class="col-md-4 mx-auto">
+						<label class="col-form-label" for="ApeUsu">Apellido:
+						</label>
+						<input class="form-control" type="text" id="ApeUsu" name="ApeUsu" value="{{ item.ApeUsu }}"/>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-md-4 mx-auto">
+						<button class="btn btn-outline-success w-100" type="submit">Actualizar</button>
+					</div>
+				</div>
 			</form>
 
 		{% endfor %}
 
-	{% endblock %}
+	</div>
+
+{% endblock %}
