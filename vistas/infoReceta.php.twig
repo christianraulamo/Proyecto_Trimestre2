@@ -4,20 +4,73 @@
 	<h1 class="mt-4">Recetas</h1>
 {% endblock %}
 
-{% block contenido %}
-	<div class="card" style="width: 50rem;">
-		<div class="card-body">
-			<h5 class="card-title" style=" text-align: center;"><u>{{ dat.NomRec }}</u></h5>
-			<p class="card-text">Ingrediente principal: {{ dat.IngredientePrincipal }}</p>
+{% block cabecera %}
+	<div class="container">
+		<br>
+
+		<div class="container-flex">
+			<div class="navbar navbar-expand-lg navbar-light bg-success">
+				<a class="navbar-brand" href="#"></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+
+						{% for item in usu %}
+							<li class="nav-item active">
+								<a class="nav-link text-light" href="index.php?ope=listar&con=receta&email={{item.Correo}}&pass={{item.Contraseña}}">Inicio</a>
+							</li>
+
+						{% endfor %}
+
+						{% for item in usu %}
+							{% if item.Admin != 0 %}
+								<li class="nav-item">
+									<a class="nav-link text-light" href="index.php?ope=anadir&con=receta&email={{item.Correo}}&pass={{item.Contraseña}}">Añadir Recetas</a>
+								</li>
+							{% endif %}
+
+						{% endfor %}
+
+
+						{% for item in usu %}
+							<li class="nav-item">
+								<a class="nav-link text-light" href="index.php?ope=perfil&con=login&email={{item.Correo}}&pass={{item.Contraseña}}">Perfil</a>
+							</li>
+
+						{% endfor %}
+
+						<li class="nav-item">
+							<a href="index.php?ope=listar&con=login" class="nav-link text-light">Salir</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
-		<ul class="list-group list-group-flush">
-			<li class="list-group-item">Tiempo de preparación: {{ dat.Tiempo }}</li>
-			<li class="list-group-item">Raciones: {{ dat.Raciones }}</li>
-			<li class="list-group-item">Temporada: {{ dat.Temporada }}</li>
-		</ul>
-		<div class="card-body">
-			<a href="receta/{{ dat.NomFichero }}"  class="btn btn-primary stretched-link">Mostrar Receta</a>
-			<a href="index.php?ope=borrar&con=receta&id={{ dat.idRec }}"  class="btn btn-danger stretched-link">Borrar</a>
-		</div>
-	</div>
-{% endblock %}
+	{% endblock %}
+
+					{% block contenido %}
+						<div class="card" style="width: 50rem;">
+							<div class="card-body">
+								<h5 class="card-title" style=" text-align: center;">
+									<u>{{ dat.NomRec }}</u>
+								</h5>
+								<p class="card-text">Ingrediente principal:
+									{{ dat.IngredientePrincipal }}</p>
+							</div>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">Tiempo de preparación:
+									{{ dat.Tiempo }}</li>
+								<li class="list-group-item">Raciones:
+									{{ dat.Raciones }}</li>
+								<li class="list-group-item">Temporada:
+									{{ dat.Temporada }}</li>
+							</ul>
+							<div class="card-body">
+								<a href="receta/{{ dat.NomFichero }}" class="btn btn-primary stretched-link">Mostrar Receta</a>
+								<a href="index.php?ope=borrar&con=receta&id={{ dat.idRec }}" class="btn btn-danger stretched-link">Borrar</a>
+							</div>
+						</div>
+					{% endblock %}

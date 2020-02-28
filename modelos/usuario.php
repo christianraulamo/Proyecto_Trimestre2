@@ -8,6 +8,7 @@ class Usuario
     private $Correo;
     private $NomUsu;
     private $Contraseña;
+    private $Admin;
 
     public function __construct()
     {
@@ -81,6 +82,14 @@ class Usuario
         $this->Contraseña = $Contraseña;
 
         return $this;
+    }
+    
+    /**
+     * @return mixed $Admin
+     */
+    public function getAdmin()
+    {
+        return $this->Admin;
     }
 
     public function save()

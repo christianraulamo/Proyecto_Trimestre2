@@ -1,7 +1,7 @@
 {% extends "plantillaBase.php.twig" %}
 
 {% block titulo %}
-	<h1 class="mt-4">Recetas</h1>
+	<h1 class="mt-4">Editar Genero</h1>
 {% endblock %}
 
 {% block cabecera %}
@@ -52,24 +52,32 @@
 	{% endblock %}
 
 	{% block contenido %}
-		<div class="row mb-3">
-			{% for item in dat %}
-				{% for item2 in usu %}
 
-					<div class="col col-lg-4">
-						<div class="card  text-white bg-success  mb-3 mx-auto" style="width:22rem;">
-							<h5 class="card-header">{{ item.NomRec}}</h5>
-							<div class="card-body">
-								<h5 class="card-title">Ingrediente principal:
-									{{item.IngredientePrincipal}}</h5>
-								<p class="card-text">Temporada:
-									{{ item.Temporada }}</p>
-								<a href="index.php?ope=ver&con=receta&id={{ item.idRec }}&email={{item2.Correo}}&pass={{item2.Contraseña}}" class="btn btn-info">Ver mas</a>
-							</div>
-						</div>
-					</div>
-				{% endfor %}
-			{% endfor %}
-		</div>
-	</div>
-{% endblock %}
+		{% for item in usu %}
+			<form action="/misseries/index.php" method="get">
+				<input type="hidden" name="con" value="login"/>
+				<input type="hidden" name="ope" value="editar"/>
+
+				<label for="id">id:
+				</label>
+				<input type="text" id="id" name="id" value="{{ item.IdUsu }}" readonly/>
+				<br/>
+
+				<label for="NomUsu">Nombre:
+				</label>
+				<input type="text" id="NomUsu" name="NomUsu" value="{{ item.NomUsu }}"/>
+				<br/>
+				<label for="ApeUsu">Apellido:
+				</label>
+				<input type="text" id="ApeUsu" name="ApeUsu" value="{{ item.ApeUsu }}"/>
+				<br/>
+				<label for="id">Admin:
+				</label>
+				<input type="text" id="id" name="id" value="{{ item.Admin }}" readonly/>
+				<br/>
+				<button type="submit">Guardar</button>
+			</form>
+
+		{% endfor %}
+
+	{% endblock %}

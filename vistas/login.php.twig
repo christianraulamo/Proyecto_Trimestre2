@@ -14,6 +14,12 @@
 		</div><br>
 		<form action="/recetas/index.php" method="get">
 			<h2 class="form-signin-heading text-center">Login</h2>
+			{% if inicio == "false" %}
+
+				<div class="row">
+					<div class="col-sd-12 mx-auto text-danger">Logueao incorrecto</div>
+				</div><br>
+			{% endif %}
 			<input type="hidden" name="con" value="login"/>
 			<input type="hidden" name="ope" value="entrar"/>
 

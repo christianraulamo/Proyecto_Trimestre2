@@ -1,22 +1,70 @@
 {% extends "plantillaBase.php.twig" %}
 
 {% block titulo %}
-<h1 class="mt-4">Añadir Ingrediente</h1>
+	<h1 class="mt-4">Añadir Ingrediente</h1>
 {% endblock %}
 
-{% block contenido %}
+{% block cabecera %}
+	<div class="container">
+		<br>
 
-<form action="/recetas/index.php" method="get">
-	<input type="hidden" name="con" value="receta" />
-	<input type="hidden" name="ope" value="anadirIngrediente" />
+		<div class="container-flex">
+			<div class="navbar navbar-expand-lg navbar-light bg-success">
+				<a class="navbar-brand" href="#"></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-	<label for="IngredientePrincipal">Nuevo Ingrediente: </label>
-    <input type="text" id="IngredientePrincipal" name="IngredientePrincipal" required />
-    <input type="hidden" id="IdRec" name="IdRec" value="{{ IdRec }}" required />
-    <br />
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
 
-	<button type="submit">Guardar</button>
-</form>
+						{% for item in usu %}
+							<li class="nav-item active">
+								<a class="nav-link text-light" href="index.php?ope=listar&con=receta&email={{item.Correo}}&pass={{item.Contraseña}}">Inicio</a>
+							</li>
+
+						{% endfor %}
+
+						{% for item in usu %}
+							{% if item.Admin != 0 %}
+								<li class="nav-item">
+									<a class="nav-link text-light" href="index.php?ope=anadir&con=receta&email={{item.Correo}}&pass={{item.Contraseña}}">Añadir Recetas</a>
+								</li>
+							{% endif %}
+
+						{% endfor %}
 
 
-{% endblock %}
+						{% for item in usu %}
+							<li class="nav-item">
+								<a class="nav-link text-light" href="index.php?ope=perfil&con=login&email={{item.Correo}}&pass={{item.Contraseña}}">Perfil</a>
+							</li>
+
+						{% endfor %}
+
+						<li class="nav-item">
+							<a href="index.php?ope=listar&con=login" class="nav-link text-light">Salir</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+
+					{% block contenido %}
+
+						<form action="/recetas/index.php" method="get">
+							<input type="hidden" name="con" value="receta"/>
+							<input type="hidden" name="ope" value="anadirIngrediente"/>
+
+							<label for="IngredientePrincipal">Nuevo Ingrediente:
+							</label>
+							<input type="text" id="IngredientePrincipal" name="IngredientePrincipal" required/>
+							<input type="hidden" id="IdRec" name="IdRec" value="{{ IdRec }}" required/>
+							<br/>
+
+							<button type="submit">Guardar</button>
+						</form>
+
+
+					{% endblock %}

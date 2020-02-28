@@ -81,6 +81,19 @@ class Sesion
 
         $sql = "SELECT * FROM usuario WHERE Correo='$email' AND Contraseña=MD5('$pass') ;";
         $db->query($sql);
+
+        $data = [];
+        while ($obj = $db->getObject("Usuario"))
+            array_push($data, $obj);
+        return $data;
+    }
+    
+    public function Usu2(string $email, string $pass)
+    {
+        $db = new BaseDeDatos();
+
+        $sql = "SELECT * FROM usuario WHERE Correo='$email' AND Contraseña='$pass' ;";
+        $db->query($sql);
         
         $data = [];
         while ($obj = $db->getObject("Usuario"))

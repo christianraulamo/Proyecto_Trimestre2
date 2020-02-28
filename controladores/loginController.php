@@ -60,17 +60,15 @@ class LoginController extends BaseController
                 $dat = Receta::findAll();
                 $usu = Sesion::Usu($email, $pass);
 
-                print_r($usu);
-
-                echo $this->twig->render("verRecetas.php.twig", ['dat' => $dat], ['usu' => $usu]);
+                echo $this->twig->render("verRecetas.php.twig", ['dat' => $dat, 'usu' => $usu]);
             } else {
-                echo $this->twig->render("login.php.twig");
+                echo $this->twig->render("login.php.twig", ["inicio" => 'false']);
             }
 
         endif;
     }
 
-    public function prueba()
+    public function perfil()
     {
         $ses = Sesion::getInstance();
 
@@ -78,12 +76,27 @@ class LoginController extends BaseController
         $email = $_GET["email"];
         $pass  = $_GET["pass"];
 
-
-        $dat = Sesion::Usu($email, $pass);
+        $usu = Sesion::Usu2($email, $pass);
         
-        print_r($dat);
+        print_r($usu);
 
 
-        echo $this->twig->render("prueba.php.twig", ['dat' => $dat]);
+        echo $this->twig->render("editarPerfil.php.twig", ['usu' => $usu]);
+    }
+
+    public function editar()
+    {
+        $ses = Sesion::getInstance();
+
+
+        $email = $_GET["email"];
+        $pass  = $_GET["pass"];
+
+        $usu = Sesion::Usu2($email, $pass);
+        
+        print_r($usu);
+
+
+        echo $this->twig->render("editarPerfil.php.twig", ['usu' => $usu]);
     }
 }

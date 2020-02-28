@@ -5,6 +5,7 @@ require_once "libs/Ruta.php";
 require_once "modelos/receta.php";
 require_once "modelos/ingrediente.php";
 require_once "modelos/rec_ingrediente.php";
+require_once "libs/sesion.php";
 
 class RecetaController extends BaseController
 {
@@ -18,22 +19,36 @@ class RecetaController extends BaseController
      */
     public function listar()
     {
+        $email = $_GET["email"];
+        $pass  = $_GET["pass"];
+
         $dat = Receta::findAll();
-        echo $this->twig->render("verRecetas.php.twig", ['dat' => $dat]);
+        $usu = Sesion::Usu2($email, $pass);
+        echo $this->twig->render("verRecetas.php.twig", ['dat' => $dat, 'usu' => $usu]);
     }
 
     public function ver()
     {
+
+        $email = $_GET["email"];
+        $pass  = $_GET["pass"];
+
+        $usu = Sesion::Usu2($email, $pass);
         $dat = Receta::find($_GET["id"]);
 
-        echo $this->twig->render("infoReceta.php.twig", ['dat' => $dat]);
+        echo $this->twig->render("infoReceta.php.twig", ['dat' => $dat, 'usu' => $usu]);
     }
 
     public function anadir()
     {
         if (!isset($_GET["nomRec"])) {
             $datG = Ingrediente::findAll();
-            echo $this->twig->render("addRecetas.php.twig", ['datG' => $datG]);
+            $email = $_GET["email"];
+            $pass  = $_GET["pass"];
+
+            $dat = Receta::findAll();
+            $usu = Sesion::Usu2($email, $pass);
+            echo $this->twig->render("addRecetas.php.twig", ['datG' => $datG, 'usu' => $usu]);
         } else if (($_GET["IngredientePrincipal"] === "Otro")) {
 
             // crear y guardar la receta
@@ -66,7 +81,12 @@ class RecetaController extends BaseController
 
             $IdRec = $rec->getIdRec();
 
-            echo $this->twig->render("addIngredientePrincipal.php.twig", ['IdRec' => $IdRec]);
+            $email = $_GET["email"];
+            $pass  = $_GET["pass"];
+
+            $usu = Sesion::Usu2($email, $pass);
+
+            echo $this->twig->render("addIngredientePrincipal.php.twig", ['IdRec' => $IdRec, 'usu' => $usu]);
         } else {
 
             // crear y guardar la receta
@@ -105,8 +125,18 @@ class RecetaController extends BaseController
 
             $per->save();
 
+            $email = $_GET["email"];
+            $pass  = $_GET["pass"];
+
+            $usu = Sesion::Usu2($email, $pass);
+
             // redirigimos al índice
-            route('index.php', 'receta', 'listar');
+            $email = $_GET["email"];
+            $pass  = $_GET["pass"];
+
+            $dat = Receta::findAll();
+            $usu = Sesion::Usu2($email, $pass);
+            echo $this->twig->render("verRecetas.php.twig", ['dat' => $dat, 'usu' => $usu]);
         }
     }
 
@@ -114,7 +144,7 @@ class RecetaController extends BaseController
     {
 
         // crear y guardar el genero
-        
+
         $IngredientePrincipal = $_GET["IngredientePrincipal"];
         $IdRec = $_GET["IdRec"];
 
@@ -123,7 +153,7 @@ class RecetaController extends BaseController
 
         // creamos el ingrediente
         $Ing->setIngredientePrincipal($IngredientePrincipal);
-        
+
 
         // Guardamos el genero
         $Ing->save();
@@ -137,8 +167,15 @@ class RecetaController extends BaseController
 
         $Rec_Ing->save();
 
+        
+
+        $email = $_GET["email"];
+        $pass  = $_GET["pass"];
+        $dat = Receta::findAll();
+
+        $usu = Sesion::Usu2($email, $pass);
         // redirigimos al índice
-       route('index.php', 'receta', 'listar');
+        echo $this->twig->render("verRecetas.php.twig", ['dat' => $dat, 'usu' => $usu]);
     }
 
     /**
@@ -150,9 +187,15 @@ class RecetaController extends BaseController
         $rec = Receta::find($ids);
         $rec->delete();
 
+        $email = $_GET["email"];
+        $pass  = $_GET["pass"];
+        $dat = Receta::findAll();
+
+        $usu = Sesion::Usu2($email, $pass);
+
         /**
          * Redirige al listado de series.
          */
-        route('index.php', 'receta', 'listar');
+        echo $this->twig->render("verRecetas.php.twig", ['dat' => $dat, 'usu' => $usu]);
     }
 }
