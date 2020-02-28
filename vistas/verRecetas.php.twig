@@ -1,0 +1,34 @@
+{% extends "plantillaBase.php.twig" %}
+
+{% block titulo %}
+	<h1 class="mt-4">Recetas</h1>
+{% endblock %}
+
+{% block contenido %}
+	{% for item in usu %}
+		<div class="col col-lg-4">
+			<div class="card  text-white bg-success  mb-3 mx-auto" style="width:22rem;">
+				<h5 class="card-header">Prueba:
+					{{ item.IdUsu }}</h5>
+				<div class="card-body"></div>
+			</div>
+		</div>
+	{% endfor %}
+	<div class="row mb-3">
+		{% for item in dat %}
+
+			<div class="col col-lg-4">
+				<div class="card  text-white bg-success  mb-3 mx-auto" style="width:22rem;">
+					<h5 class="card-header">{{ item.NomRec}}</h5>
+					<div class="card-body">
+						<h5 class="card-title">Ingrediente principal:
+							{{item.IngredientePrincipal}}</h5>
+						<p class="card-text">Temporada:
+							{{ item.Temporada }}</p>
+						<a href="index.php?ope=ver&con=receta&id={{ item.idRec }}" class="btn btn-info">Ver mas</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>{% endblock %}

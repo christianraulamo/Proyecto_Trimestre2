@@ -1,0 +1,22 @@
+{% extends "plantillaBase.php.twig" %}
+
+{% block titulo %}
+<h1 class="mt-4">Añadir Ingrediente</h1>
+{% endblock %}
+
+{% block contenido %}
+
+<form action="/recetas/index.php" method="get">
+	<input type="hidden" name="con" value="receta" />
+	<input type="hidden" name="ope" value="anadirIngrediente" />
+
+	<label for="IngredientePrincipal">Nuevo Ingrediente: </label>
+    <input type="text" id="IngredientePrincipal" name="IngredientePrincipal" required />
+    <input type="hidden" id="IdRec" name="IdRec" value="{{ IdRec }}" required />
+    <br />
+
+	<button type="submit">Guardar</button>
+</form>
+
+
+{% endblock %}

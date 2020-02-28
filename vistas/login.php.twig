@@ -1,0 +1,49 @@
+{% extends "plantillaBase.php.twig" %}
+
+{% block cabecera %}{% endblock %}
+
+
+{% block contenido %}
+
+	<div class="container">
+		<br>
+		<div class="row">
+			<div class="col-sd-12 mx-auto">
+				<img src="imagenes/logo.png"/>
+			</div>
+		</div><br>
+		<form action="/recetas/index.php" method="get">
+			<h2 class="form-signin-heading text-center">Login</h2>
+			<input type="hidden" name="con" value="login"/>
+			<input type="hidden" name="ope" value="entrar"/>
+
+			<div class="row mt-5 form-group">
+				<div class="col-md-12">
+					<input class="form-control w-25 mx-auto" type="text" name="email" value="prueba@gmail.com" placeholder="ejemplo@gmail.com" required autofocus/>
+				</div>
+			</div>
+
+			<!-- contraseña -->
+			<div class="row form-group">
+				<div class="col-md-12">
+					<input class="form-control w-25 mx-auto" type="password" name="pass" id="pass" value="prueba" placeholder="contraseña" required/>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-12 text-center">
+					<button class="btn btn-outline-success w-25" type="submit">Entrar</button>
+				</div>
+			</div>
+		</form>
+
+
+		<!-- acceso REGSISTRO -->
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<a href="index.php?ope=anadir&con=login" style="color:#27AE60">Registrar</a>
+			</div>
+		</div>
+
+	</div>
+{% endblock %}
