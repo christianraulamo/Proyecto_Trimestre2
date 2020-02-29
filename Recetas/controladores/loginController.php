@@ -28,20 +28,27 @@ class LoginController extends BaseController
             // crear y guardar el usuario
             $Correo = $_GET["Correo"];
             $NomUsu = $_GET["NomUsu"];
-            $Contraseña = md5($_GET["Contraseña"]);
+            $ApeUsu = $_GET["ApeUsu"];
+            $Contraseña = $_GET["Contraseña"];
+            $Contraseña2 = $_GET["Contraseña2"];
 
             $usu = new Usuario();
+            if ($Contraseña === $Contraseña2) {
 
-            // creamos la receta
-            $usu->setCorreo($Correo);
-            $usu->setNomUsu($NomUsu);
-            $usu->setContraseña($Contraseña);
+                // creamos el usuario
+                $usu->setCorreo($Correo);
+                $usu->setNomUsu($NomUsu);
+                $usu->setApeUsu($ApeUsu);
+                $usu->setContraseña($Contraseña);
 
-            // Guardamos el usuario
-            $usu->save();
+                // Guardamos el usuario
+                $usu->save();
 
-            // redirigimos al índice
-            route('index.php', 'login', 'listar');
+                // redirigimos al índice
+                route('index.php', 'login', 'listar');
+            } else {
+                echo $this->twig->render("registrar.php.twig", ['Correo' => $Correo, 'NomUsu' => $NomUsu, 'ApeUsu' => $ApeUsu, 'Contraseña' => $Contraseña, 'Contraseña2' => $Contraseña2, 'error' => 1]);
+            }
         }
     }
 
@@ -89,7 +96,7 @@ class LoginController extends BaseController
         $email = $_GET["email"];
         $pass  = $_GET["pass"];
 
-        
+
         $NomUsu = $_GET["NomUsu"];
         $ApeUsu = $_GET["ApeUsu"];
 
