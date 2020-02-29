@@ -11,7 +11,7 @@
 ## Registro Fallido
 <img src="Capturas/Registro_fallido.PNG" width="200px">
 
-##Zona Admin
+## Zona Admin
 
 ## Listado de recetas
 <img src="Capturas/ListadoDeRecetas_admin.PNG" width="200px">
@@ -25,7 +25,7 @@
 ## Perfil
 <img src="Capturas/EditarPerfil_admin.PNG" width="200px">
 
-##Zona Normal
+## Zona Normal
 
 ## Listado de recetas
 <img src="Capturas/ListadoDeRecetas.PNG" width="200px">
