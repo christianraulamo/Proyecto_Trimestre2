@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-02-2020 a las 18:50:58
+-- Tiempo de generación: 29-02-2020 a las 13:39:26
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -162,8 +162,8 @@ INSERT INTO `usuario` (`IdUsu`, `Correo`, `NomUsu`, `ApeUsu`, `Contraseña`, `Ad
 (0, 'prueba@gmail.com', 'pruebas', 'prueba', 'c893bad68927b457dbed39460e6afd62', 1),
 (2, 'davidgmz.deepbox@gmail.com', 'David', 'Gómez Parra', 'dc78298261719c5922b2f7f9258e3448', 0),
 (6, 'ejemplo@gmail.com', 'Christian', 'Amo Olsson', '2f1767dc31e7a8dc68b2c21bf07984ff', 0),
-(11, 'a@gmail.com', 'a', '', 'd41d8cd98f00b204e9800998ecf8427e', 0),
-(12, 'prueba2@gmail.com', 'prueba', '', 'd41d8cd98f00b204e9800998ecf8427e', 0);
+(19, 'as@gmail.com', 'as', 'as', 'd41d8cd98f00b204e9800998ecf8427e', 0),
+(20, 'a@gmail.com', 'a', 'a', '0cc175b9c0f1b6a831c399e269772661', 0);
 
 --
 -- Índices para tablas volcadas
@@ -233,7 +233,7 @@ ALTER TABLE `receta`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `IdUsu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `IdUsu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas
