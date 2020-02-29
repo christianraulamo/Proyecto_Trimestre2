@@ -33,9 +33,6 @@
 ## Información de la receta
 <img src="Capturas/InfoRecetas.PNG" width="200px">
 
-## Agregar una Receta
-<img src="Capturas/AgregarRecetas.PNG" width="200px">
-
 ## Perfil
 <img src="Capturas/EditarPerfil.PNG" width="200px">
 
