@@ -118,7 +118,7 @@ class Usuario
         if (is_null($this->IdUsu)) :
 
             $sql = "INSERT INTO usuario (Correo, NomUsu, ApeUsu, Contraseña) 
-                                VALUES ('{$this->Correo}', '{$this->NomUsu}', '{$this->ApeUsu}', '{$this->Contraseña}') ;";
+                                VALUES ('{$this->Correo}', '{$this->NomUsu}', '{$this->ApeUsu}', md5('{$this->Contraseña}')) ;";
 
 
             $db->query($sql);
