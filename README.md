@@ -36,3 +36,6 @@
 ## Perfil
 <img src="Capturas/EditarPerfil.PNG" width="200px">
 
+## Pase de datos
+<img src="Capturas/Base_de_datos.PNG" width="200px">
+
